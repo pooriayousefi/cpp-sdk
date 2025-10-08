@@ -7,6 +7,9 @@
 #include <iostream>
 #include <queue>
 #include <mutex>
+#include <thread>
+#include <condition_variable>
+#include <atomic>
 
 /**
  * @file transport.hpp
@@ -164,10 +167,10 @@ namespace pooriayousefi::mcp::transport
      * Allows direct message passing without network/stdio overhead.
      * Useful for unit tests and local client-server pairs.
      */
-    class InMemoryTransport : public Transport 
+    class InMemoryTransport : public Transport, public std::enable_shared_from_this<InMemoryTransport>
     {
     public:
-        InMemoryTransport() : running_(false), peer_(nullptr) {}
+        InMemoryTransport() : running_(false) {}
 
         /**
          * @brief Connect two in-memory transports as peers
