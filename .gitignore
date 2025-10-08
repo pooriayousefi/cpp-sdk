@@ -1,0 +1,46 @@
+# Build outputs
+build/
+builder
+*.o
+*.a
+*.so
+*.exe
+
+# IDE files - keep VSCode tasks but not personal settings
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dependencies (if using submodules, they'll be tracked separately)
+# external/
+
+# Generated documentation
+docs/generated/
+
+# Test outputs
+tests/output/
+*.log
+
+# Compiled binaries
+bin/
+lib/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# vcpkg
+vcpkg_installed/
+.vcpkg-root
+
+# Temporary files
+*.tmp
+*.temp

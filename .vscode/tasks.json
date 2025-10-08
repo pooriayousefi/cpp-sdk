@@ -1,0 +1,75 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Compile Build System",
+            "command": "g++",
+            "args": ["-std=c++23", "builder.cpp", "-o", "builder"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "type": "shell",
+            "label": "Build Debug Executable",
+            "command": "./builder",
+            "args": ["--debug", "--executable"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "Compile Build System",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "type": "shell",
+            "label": "Build Release Executable",
+            "command": "./builder",
+            "args": ["--release", "--executable"],
+            "group": "build",
+            "dependsOn": "Compile Build System",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "type": "shell",
+            "label": "Build Static Library",
+            "command": "./builder",
+            "args": ["--release", "--static"],
+            "group": "build",
+            "dependsOn": "Compile Build System",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": "$gcc"
+        }
+    ]
+}
