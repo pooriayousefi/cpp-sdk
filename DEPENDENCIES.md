@@ -17,17 +17,21 @@ This SDK follows a **minimal, header-only dependencies** approach to maximize po
 - **Why**: Industry standard, header-only, excellent performance
 - **License**: MIT
 - **Integration**: Single header include
+- **Status**: **Bundled** (no installation required)
 
 ```cpp
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
 ```
 
+## Optional Dependencies
+
 ### 2. Async I/O: Standalone Asio
 - **Repository**: https://github.com/chriskohlhoff/asio
 - **Version**: >= 1.30.2
 - **Why**: Header-only mode available, no Boost dependency
 - **License**: Boost Software License
+- **Required For**: Future async I/O operations (not currently used)
 - **Integration**: Header-only with ASIO_STANDALONE
 
 ```cpp
@@ -35,19 +39,22 @@ using json = nlohmann::json;
 #include <asio.hpp>
 ```
 
-### 3. HTTP/WebSocket: cpp-httplib
+**Note**: Not currently required. Reserved for future async I/O features.
+
+### HTTP/WebSocket: cpp-httplib
 - **Repository**: https://github.com/yhirose/cpp-httplib
 - **Version**: >= 0.18.0
 - **Stars**: 12k+
 - **Why**: Single header, supports HTTP/HTTPS/WebSocket, header-only
 - **License**: MIT
+- **Required For**: HTTP/SSE transport (`include/mcp/transport/http_transport.hpp`)
 - **Integration**: Single header include
 
 ```cpp
 #include <httplib.h>
 ```
 
-## Optional Dependencies
+**Note**: Only required if using `HttpClientTransport`, `SseClientTransport`, or `HttpServerTransport`. The core MCP SDK (stdio transport) works without cpp-httplib.
 
 ### Testing: Catch2 (v3)
 - **Repository**: https://github.com/catchorg/Catch2
